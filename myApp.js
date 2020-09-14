@@ -1,8 +1,9 @@
 var express = require("express");
 var app = express();
-const path = require("path");
-const absPath = path.join(__dirname, "./views/index.html");
-require("dotenv").config();
+var path = require("path");
+var absPath = path.join(__dirname, "./views/index.html");
+let dotenv = require("dotenv");
+dotenv.config();
 
 // --> 7)  Mount the Logger middleware here
 
