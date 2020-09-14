@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 const path = require("path");
 const absPath = path.join(__dirname, "./views/index.html");
+require("dotenv").config();
 
 // --> 7)  Mount the Logger middleware here
 
@@ -19,13 +20,21 @@ app.get("/", (req, res) => res.sendFile(absPath));
 app.use(express.static("public"));
 
 /** 5) serve JSON on a specific route */
-app.get("/json", (req, res) =>
-	res.send({
-		message: "Hello json",
-	})
-);
+// app.get("/json", (req, res) =>
+// 	res.send({
+// 		message: "Hello json",
+// 	})
+// );
 
 /** 6) Use the .env file to configure the app */
+app.get("/json", (req, res) =>
+	res.send({
+		message:
+			process.env.MESSAGE_STYLE == "uppercase"
+				? "Hello json".toUpperCase()
+				: "Hello json",
+	})
+);
 
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
