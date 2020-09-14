@@ -11,12 +11,12 @@ const absPath = path.join(__dirname, "./views/index.html");
 console.log("Hello World");
 
 /** 2) A first working Express Server */
-app.get("/", (req, res) => res.sendFile(absPath));
 
 /** 3) Serve an HTML file */
+app.get("/", (req, res) => res.sendFile(absPath));
 
 /** 4) Serve static assets  */
-
+app.use(express.static("public"));
 /** 5) serve JSON on a specific route */
 
 /** 6) Use the .env file to configure the app */
