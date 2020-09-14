@@ -17,7 +17,13 @@ app.get("/", (req, res) => res.sendFile(absPath));
 
 /** 4) Serve static assets  */
 app.use(express.static("public"));
+
 /** 5) serve JSON on a specific route */
+app.get("/json", (req, res) =>
+	res.send({
+		message: "Hello json",
+	})
+);
 
 /** 6) Use the .env file to configure the app */
 
